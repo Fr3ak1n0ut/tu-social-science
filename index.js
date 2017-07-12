@@ -2,7 +2,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 let founders = [];
-var csvContent = "";
+var csvContent = "lastname,firstname\n";
 
 var express = require('express');
 
@@ -17,12 +17,10 @@ if (process.argv[2] == '--page' && process.argv[3] != undefined) {
     if (!Number.isNaN(pages)) {
         console.log("Querying Gründerszene for pages...");
         reqFounders(pages);
-    }
-    else {
+    } else {
         console.log("wrong type: " + process.argv[3] + " should be a number.");
     }
-}
-else {
+} else {
     console.log("Valid format is:");
     console.log("node index.js --page [pageNum]");
 }
@@ -66,11 +64,9 @@ function reqFounders(page) {
             res.send(val);
         });
 
-
         app.listen(3000, function () {
             console.log('Example app listening on port 3000!');
         });
 
     });
 }
-
